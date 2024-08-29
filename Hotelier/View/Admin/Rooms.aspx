@@ -21,12 +21,12 @@
 
                     <div class="mb-3">
                         <label for="CatCb" class="form-label">Room Type</label>
-                        <asp:DropDownList ID="CatCb" runat="server" class="form-control"></asp:DropDownList>
+                        <asp:DropDownList ID="CatCb"  class="form-control" runat="server"></asp:DropDownList>
                     </div>
 
                     <div class="mb-3">
                         <label for="LocationTb" class="form-label">Location</label>
-                        <input type=text" class="form-control" id="LocationTb" runat="server" required="required">
+                        <input type="text" class="form-control" id="LocationTb" runat="server" required="required">
                     </div>                    
                     
                     <div class="mb-3">
@@ -36,17 +36,25 @@
                     
                     <div class="mb-3">
                         <label for="LabelTb" class="form-label">Label</label>
-                        <input type="text" class="form-control" id="LabelTb">
+                        <input type="text" class="form-control" id="LabelTb" runat="server" required="required">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="CatCb" class="form-label">Status</label>
+                        <asp:DropDownList ID="StatusCb"  class="form-control" runat="server">
+                            <asp:ListItem>Available</asp:ListItem>
+                            <asp:ListItem>Booked</asp:ListItem>
+                        </asp:DropDownList>
                     </div>
 
                     <div class ="row">
                         <%--edit and delete button--%>
                         <div class="col d-grid">
-                            <asp:Button ID="EditBtn" runat="server" Text="Edit" class="btn btn-warning btn-block"/>
+                            <asp:Button ID="EditBtn" runat="server" Text="Edit" class="btn btn-warning btn-block" OnClick="EditBtn_Click"/>
                         </div>
 
                         <div class="col d-grid">
-                             <asp:Button ID="DeleteBtn" runat="server" Text="Delete" class="btn btn-danger btn-block"/>
+                             <asp:Button ID="DeleteBtn" runat="server" Text="Delete" class="btn btn-danger btn-block" OnClick="DeleteBtn_Click"/>
                         </div>
                     
                     
@@ -67,7 +75,7 @@
                 </div>
             <%--grid 9 showcase room type, prices... --%>
             <div class="col-md-9">
-                <asp:GridView ID="RoomGrid" runat="server" class="table" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" AutoGenerateSelectButton="True">
+                <asp:GridView ID="RoomGrid" runat="server" class="table" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" AutoGenerateSelectButton="True" OnSelectedIndexChanged="RoomGrid_SelectedIndexChanged">
                     <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
                     <HeaderStyle BackColor="#A55129" Font-Bold="True" ForeColor="White" />
                     <PagerStyle ForeColor="#8C4510" HorizontalAlign="Center" />

@@ -97,11 +97,6 @@ namespace Hotelier.View.Admin
                 // 创建SQL命令和参数
                 string Query = "update CategoryTb1 set CatName = '{0}',CatLabels = '{1}' where CatId = {2}";
                 Query = string.Format (Query, CatName, Label, CategoriesGV.SelectedRow.Cells[1].Text);
-                //SqlParameter[] parameters = new SqlParameter[]
-                //{
-                //    new SqlParameter("@CatName", CatName),
-                //    new SqlParameter("@Label", Label)
-                //};
 
                 // 创建Functions对象并调用setData方法
                 Functions functions = new Functions();
@@ -133,8 +128,10 @@ namespace Hotelier.View.Admin
                 Functions functions = new Functions();
                 functions.SetData(Query);
                 ShowCategories();
-
                 ErrMsg.InnerText = "Room type deleted.";
+
+              
+
             }
             catch (Exception ex)
             {
