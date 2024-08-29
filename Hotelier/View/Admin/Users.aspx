@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Admin/AdminMaster.Master" AutoEventWireup="true" CodeBehind="Users.aspx.cs" Inherits="Hotelier.View.Admin.WebForm3" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Admin/AdminMaster.Master" AutoEventWireup="true" CodeBehind="Users.aspx.cs" Inherits="Hotelier.View.Admin.WebForm3" EnableEventValidation="false"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MyBody" runat="server">
@@ -15,12 +15,12 @@
 
                 <div class="mb-3">
                     <label for="UNameTb" class="form-label">User Name</label>
-                    <input type="email" class="form-control" id="UNameTb">
+                    <input type="email" class="form-control" id="UNameTb" runat="server">
                 </div>
 
                 <div class="mb-3">
                     <label for="PhoneTb" class="form-label">Phone Number</label>
-                    <input type="email" class="form-control" id="PhoneTb">
+                    <input type="email" class="form-control" id="PhoneTb" runat="server">
                 </div>                    
                 
                 <div class="mb-3">
@@ -30,17 +30,32 @@
                 
                 <div class="mb-3">
                     <label for="AddressTb" class="form-label">Address</label>
-                    <input type="email" class="form-control" id="AddressTb">
+                    <input type="email" class="form-control" id="AddressTb" runat="server">
                 </div>                
                 
                 <div class="mb-3">
                     <label for="PasswordTb" class="form-label">Password</label>
-                    <input type="email" class="form-control" id="PasswordTb">
+                    <input type="email" class="form-control" id="PasswordTb" runat="server">
                 </div>
 
-                <div class="d-grid">
-                    <button type="submit" class="btn btn-primary">Save</button>
+                <div class ="row">
+                 <%--edit and delete button--%>
+                <div class="col d-grid">
+                     <asp:Button ID="EditBtn" runat="server" Text="Edit" class="btn btn-warning btn-block" />
                 </div>
+
+                <div class="col d-grid">
+                      <asp:Button ID="DeleteBtn" runat="server" Text="Delete" class="btn btn-danger btn-block" />
+                </div>
+             </div>
+
+             <br />
+
+             <%--save room types--%>
+             <div class="d-grid">
+                 <label id="ErrMsg" runat="server" class="text-success"></label>
+                 <asp:Button ID="SaveBtn" runat="server" Text="Save" class="btn btn-success btn-block" OnClick="SaveBtn_Click"/>
+             </div>
 
                 <br />
 
@@ -48,7 +63,7 @@
         </div>
         <%--grid 9 showcase room type, prices... --%>
         <div class="col-md-9">
-            <asp:GridView ID="RoomGrid" runat="server" class="table" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2">
+            <asp:GridView ID="UserGV" runat="server" class="table" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" AutoGenerateSelectButton="True">
                 <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
                 <HeaderStyle BackColor="#A55129" Font-Bold="True" ForeColor="White" />
                 <PagerStyle ForeColor="#8C4510" HorizontalAlign="Center" />

@@ -13,5 +13,10 @@ namespace Hotelier.View.Admin
         {
 
         }
+
+        protected void SaveBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
