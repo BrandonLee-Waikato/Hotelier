@@ -16,7 +16,7 @@
 
                     <div class="mb-3">
                         <label for="RNameTb" class="form-label">Room Name</label>
-                        <input type="email" class="form-control" id="RNameTb">
+                        <input type="text" class="form-control" id="RNameTb" runat="server" required="required">
                     </div>
 
                     <div class="mb-3">
@@ -26,30 +26,48 @@
 
                     <div class="mb-3">
                         <label for="LocationTb" class="form-label">Location</label>
-                        <input type="email" class="form-control" id="LocationTb">
+                        <input type=text" class="form-control" id="LocationTb" runat="server" required="required">
                     </div>                    
                     
                     <div class="mb-3">
-                        <label for="PriceTb" class="form-label">Price</label>
-                        <input type="email" class="form-control" id="PriceTb">
+                        <label for="CostTb" class="form-label">Price</label>
+                        <input type="text" class="form-control" id="CostTb"  runat="server" required="required">
                     </div>
                     
                     <div class="mb-3">
                         <label for="LabelTb" class="form-label">Label</label>
-                        <input type="email" class="form-control" id="LabelTb">
+                        <input type="text" class="form-control" id="LabelTb">
                     </div>
 
-                    <div class="d-grid">
-                        <button type="submit" class="btn btn-primary">Save</button>
+                    <div class ="row">
+                        <%--edit and delete button--%>
+                        <div class="col d-grid">
+                            <asp:Button ID="EditBtn" runat="server" Text="Edit" class="btn btn-warning btn-block"/>
+                        </div>
+
+                        <div class="col d-grid">
+                             <asp:Button ID="DeleteBtn" runat="server" Text="Delete" class="btn btn-danger btn-block"/>
+                        </div>
+                    
+                    
+                   
                     </div>
 
                     <br />
 
-                </form>
-            </div>
+                    <%--save room types--%>
+                    <div class="d-grid">
+                        <label id="ErrMsg" runat="server" class="text-success"></label>
+                        <asp:Button ID="SaveBtn" runat="server" Text="Save" OnClick="SaveBtn_Click" class="btn btn-primary"/>
+                    </div>
+
+                        <br />
+
+                    </form>
+                </div>
             <%--grid 9 showcase room type, prices... --%>
             <div class="col-md-9">
-                <asp:GridView ID="RoomGrid" runat="server" class="table" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2">
+                <asp:GridView ID="RoomGrid" runat="server" class="table" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" AutoGenerateSelectButton="True">
                     <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
                     <HeaderStyle BackColor="#A55129" Font-Bold="True" ForeColor="White" />
                     <PagerStyle ForeColor="#8C4510" HorizontalAlign="Center" />

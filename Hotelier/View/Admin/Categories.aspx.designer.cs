@@ -33,6 +33,24 @@ namespace Hotelier.View.Admin
         protected global::System.Web.UI.HtmlControls.HtmlInputText LabelTb;
 
         /// <summary>
+        /// EditBtn 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button EditBtn;
+
+        /// <summary>
+        /// DeleteBtn 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button DeleteBtn;
+
+        /// <summary>
         /// ErrMsg 控件。
         /// </summary>
         /// <remarks>
@@ -51,12 +69,12 @@ namespace Hotelier.View.Admin
         protected global::System.Web.UI.WebControls.Button SaveBtn;
 
         /// <summary>
-        /// RoomGrid 控件。
+        /// CategoriesGV 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView RoomGrid;
+        protected global::System.Web.UI.WebControls.GridView CategoriesGV;
     }
 }

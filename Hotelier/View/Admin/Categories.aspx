@@ -25,8 +25,25 @@
                 </div>                    
                 
 
+                <div class ="row">
+                    <%--edit and delete button--%>
+                    <div class="col d-grid">
+                        <asp:Button ID="EditBtn" runat="server" Text="Edit" class="btn btn-warning btn-block" OnClick="EditBtn_Click"/>
+                    </div>
+
+                    <div class="col d-grid">
+                         <asp:Button ID="DeleteBtn" runat="server" Text="Delete" class="btn btn-danger btn-block" OnClick="DeleteBtn_Click"/>
+                    </div>
+                    
+                    
+                   
+                </div>
+
+                <br />
+
+                <%--save room types--%>
                 <div class="d-grid">
-                    <label id="ErrMsg" runat="server"></label>
+                    <label id="ErrMsg" runat="server" class="text-success"></label>
                     <asp:Button ID="SaveBtn" runat="server" Text="Save" OnClick="SaveBtm_Click" class="btn btn-primary"/>
                 </div>
 
@@ -36,16 +53,21 @@
         </div>
         <%--grid 9 showcase room type, prices... --%>
         <div class="col-md-9">
-            <asp:GridView ID="RoomGrid" runat="server" class="table" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2">
-                <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
-                <HeaderStyle BackColor="#A55129" Font-Bold="True" ForeColor="White" />
-                <PagerStyle ForeColor="#8C4510" HorizontalAlign="Center" />
-                <RowStyle BackColor="#FFF7E7" ForeColor="#8C4510" />
-                <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="White" />
-                <SortedAscendingCellStyle BackColor="#FFF1D4" />
-                <SortedAscendingHeaderStyle BackColor="#B95C30" />
-                <SortedDescendingCellStyle BackColor="#F1E5CE" />
-                <SortedDescendingHeaderStyle BackColor="#93451F" />
+            <asp:GridView ID="CategoriesGV" runat="server" class="table" CellPadding="4" OnSelectedIndexChanged="CategoriesGV_SelectedIndexChanged" ForeColor="#333333" GridLines="None">
+                <AlternatingRowStyle BackColor="White" />
+                <Columns>
+                    <asp:CommandField ShowSelectButton="True" />
+                </Columns>
+                <EditRowStyle BackColor="#7C6F57" />
+                <FooterStyle BackColor="#1C5E55" ForeColor="White" Font-Bold="True" />
+                <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                <PagerStyle ForeColor="White" HorizontalAlign="Center" BackColor="#666666" />
+                <RowStyle BackColor="#E3EAEB" />
+                <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+                <SortedAscendingCellStyle BackColor="#F8FAFA" />
+                <SortedAscendingHeaderStyle BackColor="#246B61" />
+                <SortedDescendingCellStyle BackColor="#D4DFE1" />
+                <SortedDescendingHeaderStyle BackColor="#15524A" />
             </asp:GridView>
         </div>
     </div>
