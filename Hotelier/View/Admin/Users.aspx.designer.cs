@@ -21,7 +21,7 @@ namespace Hotelier.View.Admin
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl UNameTb;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText UNameTb;
 
         /// <summary>
         /// PhoneTb 控件。
@@ -30,7 +30,7 @@ namespace Hotelier.View.Admin
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl PhoneTb;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText PhoneTb;
 
         /// <summary>
         /// GenCb 控件。
@@ -48,7 +48,7 @@ namespace Hotelier.View.Admin
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl AddressTb;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText AddressTb;
 
         /// <summary>
         /// PasswordTb 控件。
@@ -57,7 +57,7 @@ namespace Hotelier.View.Admin
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl PasswordTb;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText PasswordTb;
 
         /// <summary>
         /// EditBtn 控件。

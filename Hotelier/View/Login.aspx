@@ -37,21 +37,27 @@
                         <%--login module--%>
                         <form>
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="EmailTb">
+                                <label for="UserTb" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="UserTb" runat="server" required="required">
                                 <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="PasswordTb">
+                                <label for="PasswordTb" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="PasswordTb" runat="server" required="required">
                             </div>
-                            <div class="mb-3 form-check">
-                                <input type="radio" class="form-radio-input" id="AdminCb" value="Admin">  <label class="text-success" for="AdminCb">Admin</label>
-                   
-                                <input type="radio" class="form-radio-input" id="UserCb"> <label class="text-success" for="UserCb">User</label>
-                    
+
+                            <div class="mb-3">
+                                <label id="ErrMsg" class="text-danger" runat="server"></label>
+                                <input type="radio" id="AdminCb" runat="server" name="Role">  <label class="text-success" for="AdminCb">Admin</label>
+                                <input type="radio" id="UserCb" runat="server" name="Role"> <label class="text-success" for="UserCb">User</label>
                             </div>
-                            <asp:Button ID="LoginBtn" runat="server" Text="Login" class="btn btn-success btn-block" OnClick="LoginBtn_Click" />
+
+                            <div class="d-grid">
+                                <asp:Button ID="LoginBtn" runat="server" Text="Login" class="btn btn-success btn-block" OnClick="LoginBtn_Click" />
+                            </div>
+
+                            <br />
+
                         </form>
 
                     </div>

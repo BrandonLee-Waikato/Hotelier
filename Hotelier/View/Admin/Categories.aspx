@@ -4,6 +4,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MyBody" runat="server">
 
     <div class="container-fluid">
+         <%--显示登录用户的用户名--%>
+        <div class ="row"><div class="col-md-5"></div><div class="col-md-5"></div><div class="col-md-2"><label id="LogUser" runat="server" class="text-success"></label></div></div>
+
         <div class="row">
             <div class="col-4"></div>
             <div class="col-4"><h1 class="text-success text-center">Room Type Management</h1></div>
@@ -53,21 +56,19 @@
         </div>
         <%--grid 9 showcase room type, prices... --%>
         <div class="col-md-9">
-            <asp:GridView ID="CategoriesGV" runat="server" class="table" CellPadding="4" OnSelectedIndexChanged="CategoriesGV_SelectedIndexChanged" ForeColor="#333333" GridLines="None">
-                <AlternatingRowStyle BackColor="White" />
+            <asp:GridView ID="CategoriesGV" runat="server" class="table" CellPadding="3" OnSelectedIndexChanged="CategoriesGV_SelectedIndexChanged" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellSpacing="2">
                 <Columns>
-                    <asp:CommandField ShowSelectButton="True" />
+                    <asp:CommandField ShowSelectButton="True" SelectText="Select"/>
                 </Columns>
-                <EditRowStyle BackColor="#7C6F57" />
-                <FooterStyle BackColor="#1C5E55" ForeColor="White" Font-Bold="True" />
-                <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-                <PagerStyle ForeColor="White" HorizontalAlign="Center" BackColor="#666666" />
-                <RowStyle BackColor="#E3EAEB" />
-                <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
-                <SortedAscendingCellStyle BackColor="#F8FAFA" />
-                <SortedAscendingHeaderStyle BackColor="#246B61" />
-                <SortedDescendingCellStyle BackColor="#D4DFE1" />
-                <SortedDescendingHeaderStyle BackColor="#15524A" />
+                <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
+                <HeaderStyle BackColor="#A55129" Font-Bold="True" ForeColor="White" />
+                <PagerStyle ForeColor="#8C4510" HorizontalAlign="Center" />
+                <RowStyle BackColor="#FFF7E7" ForeColor="#8C4510" />
+                <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="White" />
+                <SortedAscendingCellStyle BackColor="#FFF1D4" />
+                <SortedAscendingHeaderStyle BackColor="#B95C30" />
+                <SortedDescendingCellStyle BackColor="#F1E5CE" />
+                <SortedDescendingHeaderStyle BackColor="#93451F" />
             </asp:GridView>
         </div>
     </div>

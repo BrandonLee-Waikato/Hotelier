@@ -18,6 +18,7 @@ namespace Hotelier.View.Admin
         {
             Con = new Models.Functions();
             ShowCategories();
+            LogUser.InnerText = Session["UserName"] as string;
         }
 
         private void ShowCategories()

@@ -15,37 +15,41 @@
 
                 <div class="mb-3">
                     <label for="UNameTb" class="form-label">User Name</label>
-                    <input type="email" class="form-control" id="UNameTb" runat="server">
+                    <input type="text" class="form-control" id="UNameTb" runat="server">
                 </div>
 
                 <div class="mb-3">
                     <label for="PhoneTb" class="form-label">Phone Number</label>
-                    <input type="email" class="form-control" id="PhoneTb" runat="server">
+                    <input type="text" class="form-control" id="PhoneTb" runat="server">
                 </div>                    
                 
                 <div class="mb-3">
                      <label for="GenCb" class="form-label">Gender</label>
-                     <asp:DropDownList ID="GenCb" runat="server" class="form-control"></asp:DropDownList>
+                     <asp:DropDownList ID="GenCb" runat="server" class="form-control">
+                           <asp:ListItem>Male</asp:ListItem>
+                           <asp:ListItem>Female</asp:ListItem>
+                     </asp:DropDownList>
+                           
                 </div>
                 
                 <div class="mb-3">
                     <label for="AddressTb" class="form-label">Address</label>
-                    <input type="email" class="form-control" id="AddressTb" runat="server">
+                    <input type="text" class="form-control" id="AddressTb" runat="server">
                 </div>                
                 
                 <div class="mb-3">
                     <label for="PasswordTb" class="form-label">Password</label>
-                    <input type="email" class="form-control" id="PasswordTb" runat="server">
+                    <input type="text" class="form-control" id="PasswordTb" runat="server">
                 </div>
 
                 <div class ="row">
                  <%--edit and delete button--%>
                 <div class="col d-grid">
-                     <asp:Button ID="EditBtn" runat="server" Text="Edit" class="btn btn-warning btn-block" />
+                     <asp:Button ID="EditBtn" runat="server" Text="Edit" class="btn btn-warning btn-block" OnClick="EditBtn_Click" />
                 </div>
 
                 <div class="col d-grid">
-                      <asp:Button ID="DeleteBtn" runat="server" Text="Delete" class="btn btn-danger btn-block" />
+                      <asp:Button ID="DeleteBtn" runat="server" Text="Delete" class="btn btn-danger btn-block" OnClick="DeleteBtn_Click" />
                 </div>
              </div>
 
@@ -63,7 +67,7 @@
         </div>
         <%--grid 9 showcase room type, prices... --%>
         <div class="col-md-9">
-            <asp:GridView ID="UserGV" runat="server" class="table" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" AutoGenerateSelectButton="True">
+            <asp:GridView ID="UserGV" runat="server" class="table" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" AutoGenerateSelectButton="True" OnSelectedIndexChanged="UserGV_SelectedIndexChanged">
                 <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
                 <HeaderStyle BackColor="#A55129" Font-Bold="True" ForeColor="White" />
                 <PagerStyle ForeColor="#8C4510" HorizontalAlign="Center" />
