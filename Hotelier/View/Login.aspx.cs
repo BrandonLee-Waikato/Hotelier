@@ -24,7 +24,7 @@ namespace Hotelier.View
             // Response.Redirect("Admin/Rooms.aspx");
             if (AdminCb.Checked)
             {
-                if(UserTb.Value == "Admin" && PasswordTb.Value == "password")
+                if (UserTb.Value == "Admin" && PasswordTb.Value == "password")
                 {
                     Session["UserName"] = "Admin";
                     Response.Redirect("Admin/Rooms.aspx");
@@ -34,7 +34,7 @@ namespace Hotelier.View
                     ErrMsg.InnerText = "Invalid Admin!";
                 }
             }
-            else
+            else if (UserCb.Checked)
             {
                 string Query = "select UId, UName, UPass from UserTb1 where UName = '{0}' and UPass = '{1}'";
                 Query = string.Format(Query, UserTb.Value, PasswordTb.Value);
@@ -47,9 +47,14 @@ namespace Hotelier.View
                 {
                     Session["UserName"] = dt.Rows[0][1].ToString();
                     Session["UId"] = Convert.ToInt32(dt.Rows[0][0].ToString());
-                    Response.Redirect("Admin/Categories.aspx");
+                    Response.Redirect("Users/Booking.aspx"); // 跳转到用户界面
                 }
             }
+            else
+            {
+                ErrMsg.InnerText = "Please select a role.";
+            }
+
         }
     }
 }

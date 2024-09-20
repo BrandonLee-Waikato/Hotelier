@@ -57,7 +57,13 @@
         <%--grid 9 showcase room type, prices... --%>
         <div class="col-md-9">
             <asp:GridView ID="CategoriesGV" runat="server" class="table" CellPadding="3" OnSelectedIndexChanged="CategoriesGV_SelectedIndexChanged" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellSpacing="2">
+                <AlternatingRowStyle BackColor="White" />
                 <Columns>
+                    <asp:TemplateField ShowHeader ="False">
+                        <ItemTemplate>
+                            <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="false" CommandName="Select" Text=""></asp:LinkButton>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:CommandField ShowSelectButton="True" SelectText="Select"/>
                 </Columns>
                 <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
