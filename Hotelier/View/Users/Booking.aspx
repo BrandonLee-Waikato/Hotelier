@@ -6,21 +6,53 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label for="RoomTb" class="form-label">Room Name</label>
+                                    <input type="text" class="form-control" id="RoomTb" runat="server">
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="AmountTb" class="form-label">Price</label>
+                                    <input type="text" class="form-control" id="AmountTb" runat="server">
+                                </div>
+                               
+                            </div>
+                            <div class="col">
 
-            </div>
+                                <div class="mb-3">
+                                    <label for="DateInTb" class="form-label">Check In Time</label>
+                                    <input type="date" class="form-control" id="DateInTb" runat="server">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="DateOutTb" class="form-label">Check Out Time</label>
+                                    <input type="date" class="form-control" id="DateOutTb" runat="server">
+                                </div>
+   
+ 
+                            </div>
 
-            <div class="col">
-                <div class="col-md-9">
-                 <asp:GridView ID="RoomsGV" runat="server" class="table" CellPadding="3"  BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellSpacing="2">
-                     <AlternatingRowStyle BackColor="White" />
-                     <Columns>
-                         <asp:TemplateField ShowHeader ="False">
-                             <ItemTemplate>
-                                 <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="false" CommandName="Select" Text=""></asp:LinkButton>
-                             </ItemTemplate>
-                         </asp:TemplateField>
-                         <asp:CommandField ShowSelectButton="True" SelectText="Select"/>
-                     </Columns>
+                        </div>
+                       
+                        <div class="row">
+                            <div class="col">
+                                <%--save room choice--%>
+                                <div>
+                                    <label id="ErrMsg" runat="server" class="text-success"></label>
+                                    <asp:Button ID="BookBtn" runat="server" Text="Book"  class="btn btn-warning"/>
+                                    <asp:Button ID="ResetBtn" runat="server" Text="Reset"  class="btn btn-danger"/>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <h3 class="text-primary">Room Information</h3>
+                 <asp:GridView ID="RoomsGV" runat="server" class="table" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" AutoGenerateSelectButton="True" OnSelectedIndexChanged="RoomsGV_SelectedIndexChanged">
                      <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
                      <HeaderStyle BackColor="#A55129" Font-Bold="True" ForeColor="White" />
                      <PagerStyle ForeColor="#8C4510" HorizontalAlign="Center" />
@@ -31,6 +63,11 @@
                      <SortedDescendingCellStyle BackColor="#F1E5CE" />
                      <SortedDescendingHeaderStyle BackColor="#93451F" />
                  </asp:GridView>
+            </div>
+
+            <div class="col">
+                <div class="col-md-9">
+                 
             </div>
         </div>
     </div>
