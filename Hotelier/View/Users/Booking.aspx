@@ -21,8 +21,9 @@
                                 </div>
                                
                             </div>
-                            <div class="col">
 
+
+                            <div class="col">
                                 <div class="mb-3">
                                     <label for="DateInTb" class="form-label">Check In Time</label>
                                     <input type="date" class="form-control" id="DateInTb" runat="server">
@@ -42,8 +43,8 @@
                                 <%--save room choice--%>
                                 <div>
                                     <label id="ErrMsg" runat="server" class="text-success"></label>
-                                    <asp:Button ID="BookBtn" runat="server" Text="Book"  class="btn btn-warning"/>
-                                    <asp:Button ID="ResetBtn" runat="server" Text="Reset"  class="btn btn-danger"/>
+                                    <asp:Button ID="BookBtn" runat="server" Text="Book"  class="btn btn-warning" OnClick="BookBtn_Click"/>
+                                    <asp:Button ID="ResetBtn" runat="server" Text="Reset"  class="btn btn-danger" OnClick="ResetBtn_Click"/>
                                 </div>
 
                             </div>
@@ -66,8 +67,29 @@
             </div>
 
             <div class="col">
-                <div class="col-md-9">
-                 
+                
+                 <div class="row">
+                     <div class="col"></div>
+                     <div class="col"><h2 class="text=primary">Rooms Booking Check</h2></div>
+
+                 </div>
+
+                 <div class="row">
+                     <div class="col">
+                        <asp:GridView ID="BookingGV" runat="server" class="table" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" AutoGenerateSelectButton="True" >
+                            <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
+                            <HeaderStyle BackColor="#A55129" Font-Bold="True" ForeColor="White" />
+                            <PagerStyle ForeColor="#8C4510" HorizontalAlign="Center" />
+                            <RowStyle BackColor="#FFF7E7" ForeColor="#8C4510" />
+                            <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="White" />
+                            <SortedAscendingCellStyle BackColor="#FFF1D4" />
+                            <SortedAscendingHeaderStyle BackColor="#B95C30" />
+                            <SortedDescendingCellStyle BackColor="#F1E5CE" />
+                            <SortedDescendingHeaderStyle BackColor="#93451F" />
+                        </asp:GridView>
+                     </div>
+                 </div>
+
             </div>
         </div>
     </div>

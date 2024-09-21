@@ -46,7 +46,7 @@ namespace Hotelier.View
                 else
                 {
                     Session["UserName"] = dt.Rows[0][1].ToString();
-                    Session["UId"] = Convert.ToInt32(dt.Rows[0][0].ToString());
+                    Session["UId"] = dt.Rows[0][0].ToString();
                     Response.Redirect("Users/Booking.aspx"); // 跳转到用户界面
                 }
             }

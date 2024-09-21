@@ -10,6 +10,9 @@
     </asp:ContentPlaceHolder>
     <%--<link rel="stylesheet" href="../../Assets/Libraries/Bootstrap/css/bootstrap.min.css"/>--%>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../Assets/CSS/style.css">
+    <script src="../Assets/JS/script.js"></script>
+
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-success bg-success">

@@ -54,7 +54,7 @@ namespace Hotelier.View.Admin
                 string Rloc = LocationTb.Value;
                 string Cost = CostTb.Value;
                 string Label = LabelTb.Value;
-                string Status = "Available";
+                string Status = StatusCb.SelectedValue.ToString();
                 string Query = "insert into RoomTb1 values('{0}','{1}','{2}','{3}','{4}','{5}')";
 
                 Query = string.Format(Query, RName, RCat, Rloc, Cost, Label, Status);
