@@ -67,12 +67,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\CSS\custom.css" />
+    <Content Include="Assets\CSS\Main.css" />
     <Content Include="Assets\CSS\sb-admin-2.css" />
     <Content Include="Assets\CSS\sb-admin-2.min.css" />
+    <Content Include="Assets\Images\ForgetPassword.jpg" />
+    <Content Include="Assets\Images\h1.jpg" />
+    <Content Include="Assets\Images\h2.jpg" />
+    <Content Include="Assets\Images\h3.jpg" />
+    <Content Include="Assets\Images\h4.jpg" />
+    <Content Include="Assets\Images\h5.jpg" />
+    <Content Include="Assets\Images\h6.jpg" />
+    <Content Include="Assets\Images\h7.jpg" />
+    <Content Include="Assets\Images\Hotel5.jpeg" />
+    <Content Include="Assets\Images\Hotel_Icon2.png" />
+    <Content Include="Assets\Images\Hotel_Icon1.png" />
     <Content Include="Assets\Images\Hotel1.jpeg" />
     <Content Include="Assets\Images\Hotel2.jpeg" />
     <Content Include="Assets\Images\Hotel3.jpeg" />
     <Content Include="Assets\Images\Hotel4.jpeg" />
+    <Content Include="Assets\Images\Register.jpg" />
     <Content Include="Assets\Images\undraw_posting_photo.svg" />
     <Content Include="Assets\Images\undraw_profile.svg" />
     <Content Include="Assets\Images\undraw_profile_1.svg" />
@@ -83,6 +97,7 @@
     <Content Include="Assets\JS\demo\chart-bar-demo.js" />
     <Content Include="Assets\JS\demo\chart-pie-demo.js" />
     <Content Include="Assets\JS\demo\datatables-demo.js" />
+    <Content Include="Assets\JS\Main.js" />
     <Content Include="Assets\JS\sb-admin-2.js" />
     <Content Include="Assets\JS\sb-admin-2.min.js" />
     <Content Include="Assets\Libraries\Bootstrap\css\bootstrap-grid.css" />
@@ -1777,12 +1792,13 @@
     <Content Include="Assets\vendor\jquery\jquery.slim.js" />
     <Content Include="Assets\vendor\jquery\jquery.slim.min.js" />
     <Content Include="Global.asax" />
-    <Content Include="View\Admin\index.aspx" />
     <Content Include="View\Admin\Rooms.aspx" />
     <Content Include="View\Admin\Categories.aspx" />
     <Content Include="View\Admin\Users.aspx" />
+    <Content Include="View\ForgetPassword.aspx" />
     <Content Include="View\index.aspx" />
     <Content Include="View\Login.aspx" />
+    <Content Include="View\Register.aspx" />
     <Content Include="View\Users\Booking.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -1798,13 +1814,6 @@
     </Compile>
     <Compile Include="View\Admin\AdminMaster.Master.designer.cs">
       <DependentUpon>AdminMaster.Master</DependentUpon>
-    </Compile>
-    <Compile Include="View\Admin\index.aspx.cs">
-      <DependentUpon>index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="View\Admin\index.aspx.designer.cs">
-      <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Admin\Rooms.aspx.cs">
       <DependentUpon>Rooms.aspx</DependentUpon>
@@ -1827,12 +1836,26 @@
     <Compile Include="View\Admin\Users.aspx.designer.cs">
       <DependentUpon>Users.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\ForgetPassword.aspx.cs">
+      <DependentUpon>ForgetPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\ForgetPassword.aspx.designer.cs">
+      <DependentUpon>ForgetPassword.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="View\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Users\Booking.aspx.cs">
       <DependentUpon>Booking.aspx</DependentUpon>

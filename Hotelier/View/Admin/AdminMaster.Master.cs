@@ -11,7 +11,16 @@ namespace Hotelier.View.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                // 假设您有一个 Session["AdminUsername"] 保存了管理员用户名
+                if (Session["AdminUsername"] != null)
+                {
+                    lblUsername.Text = Session["AdminUsername"].ToString();
+                }
+                
+            }
         }
+
     }
 }

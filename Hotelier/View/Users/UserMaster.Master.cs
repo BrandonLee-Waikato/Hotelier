@@ -11,7 +11,7 @@ namespace Hotelier.View.Users
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //lblUsername.Text = Session["UserName"].ToString();
         }
     }
 }
