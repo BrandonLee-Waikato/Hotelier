@@ -1,105 +1,120 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Users/UserMaster.Master" AutoEventWireup="true" CodeBehind="Booking.aspx.cs" Inherits="Hotelier.View.Users.Booking" EnableEventValidation="false"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <!-- 您可以在这里添加额外的头部内容 -->
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MyBody" runat="server">
 
-    <div style="display: flex; justify-content: center">
-        <div class="card shadow mb-4" style="width: 95%">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Room Information</h6>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <asp:GridView ID="RoomsGV" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" DataKeyNames="roomId" OnSelectedIndexChanged="RoomsGV_SelectedIndexChanged" AllowPaging="True" PageSize="5">
-                        <Columns>
-                            <asp:BoundField DataField="roomId" HeaderText="Room Id" DataFormatString="{0:D4}" ReadOnly="True" />
-                            <asp:BoundField DataField="roomName" HeaderText="Name" />
-                            <asp:BoundField DataField="category" HeaderText="Categories" />
-                            <asp:BoundField DataField="cost" HeaderText="Cost" DataFormatString="{0:C}" />
-                            <asp:BoundField DataField="status" HeaderText="Status" />
-                            <asp:ButtonField Text="Select" CommandName="Select" ButtonType="Button" />
-                        </Columns>
-                        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                        <RowStyle BackColor="#EFF3FB" />
-                        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                    </asp:GridView>
-                </div>
-            </div>
+
+     <!-- 房间卡片展示 -->
+    <div class="container">
+        <div class="row">
+            <asp:Repeater ID="RoomsRepeater" runat="server">
+                <ItemTemplate>
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <img src='<%# ResolveUrl("~/" + Eval("RImagePath")) %>' class="card-img-top" alt="Room Image" />
+                            <div class="card-body">
+                                <h5 class="card-title"><%# Eval("RName") %></h5>
+                                <p class="card-text"><%# Eval("RDescription") %></p>
+                                <%--<a href='BookingDetails.aspx?RoomId=<%# Eval("RId") %>' class="btn btn-primary">View Details</a>--%>
+                            </div>
+                        </div>
+                    </div>
+                </ItemTemplate>
+            </asp:Repeater>
         </div>
     </div>
 
-    <!-- 入住和退房时间输入框 -->
-    <asp:Panel ID="BookingPanel" runat="server" Visible="false">
-        <div class="container-fluid mt-4">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Booking Details</h6>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <!-- 房间信息显示 -->
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="SelectedRoomTb" class="form-label">Selected Room</label>
-                                <asp:TextBox ID="SelectedRoomTb" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
-                            </div>
-                            <div class="mb-3">
-                                <label for="AmountTb" class="form-label">Price</label>
-                                <asp:TextBox ID="AmountTb" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
-                            </div>
-                        </div>
-                        <!-- 日期输入框 -->
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="DateInTb" class="form-label">Check In Date</label>
-                                <asp:TextBox ID="DateInTb" runat="server" CssClass="form-control" Type="date" OnTextChanged="DateInTb_TextChanged" AutoPostBack="true"></asp:TextBox>
-                            </div>
-                            <div class="mb-3">
-                                <label for="DateOutTb" class="form-label">Check Out Date</label>
-                                <asp:TextBox ID="DateOutTb" runat="server" CssClass="form-control" Type="date"></asp:TextBox>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 预定和重置按钮 -->
-                    <div class="row">
-                        <div class="col">
-                            <asp:Label ID="ErrMsg" runat="server" CssClass="text-danger"></asp:Label>
-                            <asp:Label ID="SuccessMsg" runat="server" CssClass="text-success"></asp:Label>
-                            <div class="mt-3">
-                                <asp:Button ID="BookBtn" runat="server" Text="Book" CssClass="btn btn-warning me-2" OnClick="BookBtn_Click" />
-                                <asp:Button ID="ResetBtn" runat="server" Text="Reset" CssClass="btn btn-danger" OnClick="ResetBtn_Click" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </asp:Panel>
 
-    <!-- Rooms Booking Check -->
-    <div style="display: flex; justify-content: center">
-        <div class="card shadow mb-4" style="width: 95%">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Rooms Booking Check</h6>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <asp:GridView ID="BookingGV" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" AllowPaging="True" PageSize="5">
-                        <Columns>
-                            <asp:BoundField DataField="orderNumber" HeaderText="Order Number" />
-                            <asp:BoundField DataField="date" HeaderText="Date" DataFormatString="{0:yyyy-MM-dd}" />
-                            <asp:BoundField DataField="roomNumber" HeaderText="Room Number" />
-                            <asp:BoundField DataField="userId" HeaderText="UserID" />
-                            <asp:BoundField DataField="checkInTime" HeaderText="Check In Date" DataFormatString="{0:yyyy-MM-dd}" />
-                            <asp:BoundField DataField="checkOutTime" HeaderText="Check Out Date" DataFormatString="{0:yyyy-MM-dd}" />
-                            <asp:BoundField DataField="totalAmount" HeaderText="Total Amount" DataFormatString="{0:C}" />
-                        </Columns>
-                        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                        <RowStyle BackColor="#EFF3FB" />
-                        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                    </asp:GridView>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label for="RoomTb" class="form-label">Room Name</label>
+                                    <input type="text" class="form-control" id="RoomTb" runat="server">
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="AmountTb" class="form-label">Price</label>
+                                    <input type="text" class="form-control" id="AmountTb" runat="server">
+                                </div>
+                               
+                            </div>
+
+
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label for="DateInTb" class="form-label">Check In Time</label>
+                                    <input type="date" class="form-control" id="DateInTb" runat="server">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="DateOutTb" class="form-label">Check Out Time</label>
+                                    <input type="date" class="form-control" id="DateOutTb" runat="server">
+                                </div>
+   
+ 
+                            </div>
+
+                        </div>
+                       
+                        <div class="row">
+                            <div class="col">
+                                <%--save room choice--%>
+                                <div>
+                                    <label id="ErrMsg" runat="server" class="text-success"></label>
+                                    <asp:Button ID="BookBtn" runat="server" Text="Book"  class="btn btn-warning" OnClick="BookBtn_Click"/>
+                                    <asp:Button ID="ResetBtn" runat="server" Text="Reset"  class="btn btn-danger" OnClick="ResetBtn_Click"/>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
+                <h3 class="text-primary">Room Information</h3>
+                 <asp:GridView ID="RoomsGV" runat="server" class="table" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" AutoGenerateSelectButton="True" OnSelectedIndexChanged="RoomsGV_SelectedIndexChanged" ForeColor="Black" GridLines="Vertical">
+                     <AlternatingRowStyle BackColor="White" />
+                     <FooterStyle BackColor="#CCCC99" />
+                     <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
+                     <PagerStyle ForeColor="Black" HorizontalAlign="Right" BackColor="#F7F7DE" />
+                     <RowStyle BackColor="#F7F7DE" />
+                     <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+                     <SortedAscendingCellStyle BackColor="#FBFBF2" />
+                     <SortedAscendingHeaderStyle BackColor="#848384" />
+                     <SortedDescendingCellStyle BackColor="#EAEAD3" />
+                     <SortedDescendingHeaderStyle BackColor="#575357" />
+                 </asp:GridView>
+            </div>
+
+            <div class="col">
+                
+                 <div class="row">
+                     <div class="col"></div>
+                     <div class="col"><h2 class="text=primary">Rooms Booking Check</h2></div>
+
+                 </div>
+
+                 <div class="row">
+                     <div class="col">
+                        <asp:GridView ID="BookingGV" runat="server" class="table" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" AutoGenerateSelectButton="True" ForeColor="Black" GridLines="Vertical" >
+                            <AlternatingRowStyle BackColor="White" />
+                            <FooterStyle BackColor="#CCCC99" />
+                            <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
+                            <PagerStyle ForeColor="Black" HorizontalAlign="Right" BackColor="#F7F7DE" />
+                            <RowStyle BackColor="#F7F7DE" />
+                            <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+                            <SortedAscendingCellStyle BackColor="#FBFBF2" />
+                            <SortedAscendingHeaderStyle BackColor="#848384" />
+                            <SortedDescendingCellStyle BackColor="#EAEAD3" />
+                            <SortedDescendingHeaderStyle BackColor="#575357" />
+                        </asp:GridView>
+                     </div>
+                 </div>
+
             </div>
         </div>
     </div>

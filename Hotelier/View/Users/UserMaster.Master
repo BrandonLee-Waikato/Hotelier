@@ -18,9 +18,33 @@
 
     <!-- Custom styles for this template-->
     <link href="~/Assets/CSS/sb-admin-2.min.css" rel="stylesheet" />
-
+    
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+
+    <style>
+    .bg-gradient-primary {
+    background-color: #272b34;
+    background-image: linear-gradient(180deg, #272b34 10%, #243c83 100%);
+    background-size: cover;
+    }
+
+    .btn-primary {
+    color: #fff;
+    /*background-color: #4d515a;*/
+    border-color: #f1f1f1;
+    border-radius: 50px;
+    background: #dedede;
+    box-shadow:  3px 4px 3px 0px #bdbdbd, 
+        0px 0px 0px 0px #ffffff;
+    }
+
+    .topbar.navbar-light .navbar-nav .nav-item .nav-link {
+    color: #272b34;
+    }
+
+
+    </style>
 </head>
 
 <body id="page-top">
@@ -36,7 +60,8 @@
                     <div class="sidebar-brand-icon rotate-n-15">
                         <i class="fas fa-hotel"></i>
                     </div>
-                    <div class="sidebar-brand-text mx-3">Hotelier User</div>
+                     
+                    <div class="sidebar-brand-text mx-3" href="Booking.aspx">Hotelier User</div>
                 </a>
 
                 <!-- Divider -->
@@ -44,7 +69,7 @@
 
                 <!-- Nav Item - Dashboard -->
                 <li class="nav-item active">
-                    <a class="nav-link" href="UserDashboard.aspx">
+                    <a class="nav-link" href="Booking.aspx">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
                         <span>Dashboard</span></a>
                 </li>
@@ -109,6 +134,19 @@
 
                         <!-- Topbar Navbar -->
                         <ul class="navbar-nav ml-auto">
+
+                            <!-- 房型分类导航菜单 -->
+                            <asp:Repeater ID="CategoryRepeater" runat="server">
+                                <ItemTemplate>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="Booking.aspx?CategoryId=<%# Eval("CatId") %>">
+                                            <%# Eval("CatName") %>
+                                        </a>
+                                    </li>
+                                </ItemTemplate>
+                            </asp:Repeater>
+
+
 
                             <!-- Nav Item - User Information -->
                             <li class="nav-item dropdown no-arrow">

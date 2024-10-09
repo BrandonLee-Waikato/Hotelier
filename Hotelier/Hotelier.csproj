@@ -71,6 +71,9 @@
     <Content Include="Assets\CSS\Main.css" />
     <Content Include="Assets\CSS\sb-admin-2.css" />
     <Content Include="Assets\CSS\sb-admin-2.min.css" />
+    <Content Include="Assets\Database\HotelierDb.mdf" />
+    <Content Include="Assets\Database\HotelierDb_log.ldf" />
+    <Content Include="Assets\Images\B1.jpeg" />
     <Content Include="Assets\Images\ForgetPassword.jpg" />
     <Content Include="Assets\Images\h1.jpg" />
     <Content Include="Assets\Images\h2.jpg" />
@@ -1792,19 +1795,27 @@
     <Content Include="Assets\vendor\jquery\jquery.slim.js" />
     <Content Include="Assets\vendor\jquery\jquery.slim.min.js" />
     <Content Include="Global.asax" />
+    <Content Include="index.aspx" />
     <Content Include="View\Admin\Rooms.aspx" />
     <Content Include="View\Admin\Categories.aspx" />
     <Content Include="View\Admin\Users.aspx" />
     <Content Include="View\ForgetPassword.aspx" />
-    <Content Include="View\index.aspx" />
     <Content Include="View\Login.aspx" />
     <Content Include="View\Register.aspx" />
     <Content Include="View\Users\Booking.aspx" />
+    <Content Include="View\Users\Profile.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\Functions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1863,6 +1874,13 @@
     </Compile>
     <Compile Include="View\Users\Booking.aspx.designer.cs">
       <DependentUpon>Booking.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Users\Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Users\Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Users\UserMaster.Master.cs">
       <DependentUpon>UserMaster.Master</DependentUpon>

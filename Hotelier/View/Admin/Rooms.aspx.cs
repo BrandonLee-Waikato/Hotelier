@@ -1,7 +1,9 @@
 ﻿using Hotelier.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Web;
@@ -16,13 +18,16 @@ namespace Hotelier.View.Admin
         protected void Page_Load(object sender, EventArgs e)
         {
             Con = new Models.Functions();
-            ShowRooms();
-            GetCategories();
+            if (!IsPostBack)
+            {
+                ShowRooms();
+                GetCategories();
+            }
         }
 
         private void ShowRooms()
         {
-            string Query = "select * from RoomTb1";
+            string Query = "SELECT * FROM RoomTb1";
             RoomGrid.DataSource = Con.GetData(Query);
             RoomGrid.DataBind();
 
@@ -34,17 +39,19 @@ namespace Hotelier.View.Admin
             RoomGrid.HeaderRow.Cells[6].Text = "Room Label";
             RoomGrid.HeaderRow.Cells[7].Text = "Room Status";
         }
+
         private void GetCategories()
         {
-            string Query = "Select * from CategoryTb1";
+            string Query = "SELECT * FROM CategoryTb1";
             if (!Page.IsPostBack)
             {
-                CatCb.DataTextField = Con.GetData(Query).Columns["CatName"].ToString();
-                CatCb.DataValueField = Con.GetData(Query).Columns["CatId"].ToString();
+                CatCb.DataTextField = "CatName";
+                CatCb.DataValueField = "CatId";
                 CatCb.DataSource = Con.GetData(Query);
                 CatCb.DataBind();
             }
         }
+
         protected void SaveBtn_Click(object sender, EventArgs e)
         {
             try
@@ -52,27 +59,55 @@ namespace Hotelier.View.Admin
                 string RName = RNameTb.Value;
                 string RCat = CatCb.SelectedValue.ToString();
                 string Rloc = LocationTb.Value;
-                string Cost = CostTb.Value;
+                decimal Cost = decimal.Parse(CostTb.Value);
                 string Label = LabelTb.Value;
                 string Status = StatusCb.SelectedValue.ToString();
-                string Query = "insert into RoomTb1 values('{0}','{1}','{2}','{3}','{4}','{5}')";
+                string Description = DescriptionTb.Value;
+                string ImagePath = "";
 
-                Query = string.Format(Query, RName, RCat, Rloc, Cost, Label, Status);
-                Con.SetData(Query);
+                // 处理图片上传
+                if (ImageUpload.HasFile)
+                {
+                    string filename = Path.GetFileName(ImageUpload.FileName);
+                    string filepath = Server.MapPath("~/Assets/Images/") + filename;
+                    ImageUpload.SaveAs(filepath);
+                    ImagePath = "Assets/Images/" + filename; // 存储相对路径
+                }
+
+                // 使用参数化查询防止SQL注入
+                string Query = "INSERT INTO RoomTb1 (RName, RCategory, RLocation, RCost, RLabels, Status, RDescription, RImagePath) " +
+                               "VALUES (@RName, @RCat, @Rloc, @Cost, @Label, @Status, @Description, @ImagePath)";
+
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+                    new SqlParameter("@RName", RName),
+                    new SqlParameter("@RCat", RCat),
+                    new SqlParameter("@Rloc", Rloc),
+                    new SqlParameter("@Cost", Cost),
+                    new SqlParameter("@Label", Label),
+                    new SqlParameter("@Status", Status),
+                    new SqlParameter("@Description", Description),
+                    new SqlParameter("@ImagePath", ImagePath)
+                };
+
+                Con.SetData(Query, parameters);
                 ShowRooms();
                 ErrMsg.InnerText = "Room added successfully";
+
+                // 清空表单
                 RNameTb.Value = "";
                 CatCb.SelectedIndex = -1;
                 LocationTb.Value = "";
                 CostTb.Value = "";
                 LabelTb.Value = "";
-
+                DescriptionTb.Value = "";
             }
             catch (Exception ex)
             {
-                ErrMsg.InnerText = ex.ToString();
+                ErrMsg.InnerText = ex.Message;
             }
         }
+
         int Key = 0;
         protected void RoomGrid_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -83,6 +118,19 @@ namespace Hotelier.View.Admin
             CostTb.Value = RoomGrid.SelectedRow.Cells[5].Text;
             LabelTb.Value = RoomGrid.SelectedRow.Cells[6].Text;
             StatusCb.SelectedValue = RoomGrid.SelectedRow.Cells[7].Text;
+
+            // 从数据库中获取描述和图片路径
+            string Query = "SELECT RDescription, RImagePath FROM RoomTb1 WHERE RId = @RId";
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@RId", Key)
+            };
+            var data = Con.GetData(Query, parameters);
+            if (data.Rows.Count > 0)
+            {
+                DescriptionTb.Value = data.Rows[0]["RDescription"].ToString();
+                ViewState["CurrentImagePath"] = data.Rows[0]["RImagePath"].ToString();
+            }
         }
 
         protected void EditBtn_Click(object sender, EventArgs e)
@@ -92,21 +140,54 @@ namespace Hotelier.View.Admin
                 string RName = RNameTb.Value;
                 string RCat = CatCb.SelectedValue.ToString();
                 string Rloc = LocationTb.Value;
-                string Cost = CostTb.Value;
+                decimal Cost = decimal.Parse(CostTb.Value);
                 string Label = LabelTb.Value;
                 string Status = StatusCb.SelectedValue.ToString();
-                string Query = "update RoomTb1 set RName = '{0}', RCategory = '{1}', RLocation = '{2}', RCost = '{3}', RLabels = '{4}', Status = '{5}' where RId = {6}";
+                string Description = DescriptionTb.Value;
+                string ImagePath = "";
 
-                Query = string.Format(Query, RName, RCat, Rloc, Cost, Label, Status, RoomGrid.SelectedRow.Cells[1].Text);
-                Con.SetData(Query);
+                // 处理图片上传（如果有新的图片）
+                if (ImageUpload.HasFile)
+                {
+                    string filename = Path.GetFileName(ImageUpload.FileName);
+                    string filepath = Server.MapPath("~/Assets/Images/") + filename;
+                    ImageUpload.SaveAs(filepath);
+                    ImagePath = "Assets/Images/" + filename; // 存储相对路径
+                }
+                else
+                {
+                    // 如果没有上传新图片，则使用原有的图片路径
+                    ImagePath = ViewState["CurrentImagePath"] != null ? ViewState["CurrentImagePath"].ToString() : "";
+                }
+
+                // 使用参数化查询防止SQL注入
+                string Query = "UPDATE RoomTb1 SET RName = @RName, RCategory = @RCat, RLocation = @Rloc, RCost = @Cost, " +
+                               "RLabels = @Label, Status = @Status, RDescription = @Description, RImagePath = @ImagePath WHERE RId = @RId";
+
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+                    new SqlParameter("@RName", RName),
+                    new SqlParameter("@RCat", RCat),
+                    new SqlParameter("@Rloc", Rloc),
+                    new SqlParameter("@Cost", Cost),
+                    new SqlParameter("@Label", Label),
+                    new SqlParameter("@Status", Status),
+                    new SqlParameter("@Description", Description),
+                    new SqlParameter("@ImagePath", ImagePath),
+                    new SqlParameter("@RId", Key)
+                };
+
+                Con.SetData(Query, parameters);
                 ShowRooms();
-                ErrMsg.InnerText = "Room updated";
+                ErrMsg.InnerText = "Room updated successfully";
+
+                // 清空表单
                 RNameTb.Value = "";
                 CatCb.SelectedIndex = -1;
                 LocationTb.Value = "";
                 CostTb.Value = "";
                 LabelTb.Value = "";
-
+                DescriptionTb.Value = "";
             }
             catch (Exception ex)
             {
@@ -118,30 +199,28 @@ namespace Hotelier.View.Admin
         {
             try
             {
+                string Query = "DELETE FROM RoomTb1 WHERE RId = @RId";
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+                    new SqlParameter("@RId", Key)
+                };
 
-                // 创建SQL命令和参数
-                string Query = "delete from RoomTb1 where RId = {0}";
-                Query = string.Format(Query, RoomGrid.SelectedRow.Cells[1].Text);
-
-                // 创建Functions对象并调用setData方法
-                Functions functions = new Functions();
-                functions.SetData(Query);
+                Con.SetData(Query, parameters);
                 ShowRooms();
 
                 ErrMsg.InnerText = "Room deleted.";
 
-                //删除后清空表单信息
+                // 清空表单
                 RNameTb.Value = "";
                 CatCb.SelectedIndex = -1;
                 LocationTb.Value = "";
                 CostTb.Value = "";
                 LabelTb.Value = "";
+                DescriptionTb.Value = "";
             }
             catch (Exception ex)
             {
-                // 仅向用户显示通用错误消息，避免泄露敏感信息
-                ErrMsg.InnerText = "Error adding room type. Please try again. Detailed error: " + ex.Message;
-                System.Diagnostics.Debug.WriteLine("Error: " + ex.ToString());
+                ErrMsg.InnerText = ex.Message;
             }
         }
     }

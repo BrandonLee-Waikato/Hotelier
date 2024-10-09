@@ -107,6 +107,21 @@
             margin-left: -120%;
         }
 
+
+        .neon {
+          color: #fff;
+          text-shadow:
+            0 0 5px #fff,
+            0 0 10px #fff,
+            0 0 20px #fff,
+            0 0 40px #0ff,
+            0 0 80px #0ff,
+            0 0 90px #0ff,
+            0 0 100px #0ff,
+            0 0 150px #0ff;
+        }
+
+
     </style>
 </head>
 <%--<body class="bg-gradient-primary">--%>
@@ -179,7 +194,7 @@
                                     <div class="p-5">
                                         <!-- 标题 -->
                                         <div class="text-center">
-                                            <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                            <h2 class="neon">Welcome Back!</h2>
                                         </div>
                                         <!-- 错误信息显示 -->
                                         <asp:Label ID="ErrMsg" runat="server" CssClass="text-danger"></asp:Label>
@@ -210,10 +225,12 @@
                                         </div>
                                         <!-- 其他链接 -->
                                         <a href="index.html" class="btn btn-google btn-user btn-block">
-                                            <i class="fab fa-google fa-fw"></i> Login with Google
+                                            <%--<i class="fab fa-google fa-fw"></i>--%> 
+                                            Make your group trip dreams come true!
                                         </a>
                                         <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                            <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+                                            <%--<i class="fab fa-facebook-f fa-fw"></i>--%>
+                                            Break from your routine and play a little!
                                         </a>
                                         <hr />
 

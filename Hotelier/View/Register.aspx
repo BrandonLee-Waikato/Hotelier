@@ -22,6 +22,19 @@
             -webkit-backdrop-filter: blur(10px); /* 兼容 Safari */
             border: 1px solid rgba(255, 255, 255, 0.3);
          }
+
+           .neon {
+    color: #fff;
+    text-shadow:
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 20px #fff,
+      0 0 40px #0ff,
+      0 0 80px #0ff,
+      0 0 90px #0ff,
+      0 0 100px #0ff,
+      0 0 150px #0ff;
+  }
     </style>
 </head>
 <body class="bg-gradient-primary" runat="server">
@@ -35,7 +48,7 @@
                             <!-- Nested Row within Card Body -->
                             <div class="p-5">
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                                    <h1 class="neon">Create an Account!</h1>
                                 </div>
                                 <!-- 错误信息显示 -->
                                 <asp:Label ID="ErrMsg" runat="server" CssClass="text-danger"></asp:Label>

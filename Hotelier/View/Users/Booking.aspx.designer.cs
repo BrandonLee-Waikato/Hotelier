@@ -15,31 +15,22 @@ namespace Hotelier.View.Users
     {
 
         /// <summary>
-        /// RoomsGV 控件。
+        /// RoomsRepeater 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView RoomsGV;
+        protected global::System.Web.UI.WebControls.Repeater RoomsRepeater;
 
         /// <summary>
-        /// BookingPanel 控件。
+        /// RoomTb 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel BookingPanel;
-
-        /// <summary>
-        /// SelectedRoomTb 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox SelectedRoomTb;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText RoomTb;
 
         /// <summary>
         /// AmountTb 控件。
@@ -48,7 +39,7 @@ namespace Hotelier.View.Users
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox AmountTb;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText AmountTb;
 
         /// <summary>
         /// DateInTb 控件。
@@ -57,7 +48,7 @@ namespace Hotelier.View.Users
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox DateInTb;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl DateInTb;
 
         /// <summary>
         /// DateOutTb 控件。
@@ -66,7 +57,7 @@ namespace Hotelier.View.Users
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox DateOutTb;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl DateOutTb;
 
         /// <summary>
         /// ErrMsg 控件。
@@ -75,16 +66,7 @@ namespace Hotelier.View.Users
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ErrMsg;
-
-        /// <summary>
-        /// SuccessMsg 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label SuccessMsg;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ErrMsg;
 
         /// <summary>
         /// BookBtn 控件。
@@ -103,6 +85,15 @@ namespace Hotelier.View.Users
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ResetBtn;
+
+        /// <summary>
+        /// RoomsGV 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView RoomsGV;
 
         /// <summary>
         /// BookingGV 控件。
